@@ -29,6 +29,7 @@ class Blockchain(object):
     def new_block(self, proof, previous_hash=None):
         """
         Create a new Block in the Blockchain
+
         :param proof: <int> The proof given by the Proof of Work algorithm
         :param previous_hash: (Optional) <str> Hash of previous Block
         :return: <dict> New Block
@@ -51,6 +52,7 @@ class Blockchain(object):
     def new_transaction(self, sender, recipient, amount):
         """
         Creates a new transaction to go into the next mined Block
+
         :param sender: <str> Address of the Sender
         :param recipient: <str> Address of the Recipient
         :param amount: <int> Amount
@@ -73,6 +75,7 @@ class Blockchain(object):
     def hash(block):
         """
         Creates a SHA-256 hash of a Block
+
         :param block: <dict> Block
         :return: <str>
         """
@@ -86,6 +89,7 @@ class Blockchain(object):
         Simple Proof of Work Algorithm:
          - Find a number p' such that hash(pp') contains leading 4 zeroes, where p is the previous p'
          - p is the previous proof, and p' is the new proof
+
         :param last_proof: <int>
         :return: <int>
         """
@@ -100,6 +104,7 @@ class Blockchain(object):
     def valid_proof(last_proof, proof):
         """
         Validates the Proof: Does hash(last_proof, proof) contain 4 leading zeroes?
+
         :param last_proof: <int> Previous Proof
         :param proof: <int> Current Proof
         :return: <bool> True if correct, False if not.
