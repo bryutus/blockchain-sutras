@@ -7,14 +7,14 @@ from uuid import uuid4
 import requests
 from flask import Flask, jsonify, request
 
-class Blockchain(object):
+class Blockchain:
     def __init__(self):
         self.current_transactions = []
         self.chain = []
         self.nodes = set()
 
         # Create the genesis block
-        self.new_block(previous_hash=1, proof=100)
+        self.new_block(previous_hash='1', proof=100)
 
     def register_node(self, address):
         """
@@ -58,7 +58,7 @@ class Blockchain(object):
 
         def resolve_conflicts(self):
             """
-            This is our Consensus Algorithm, it resolves conflicts
+        This is our consensus algorithm, it resolves conflicts
             by replacing our chain with the longest one in the network.
 
             :return: <bool> True if our chain was replaced, False if not
@@ -179,7 +179,7 @@ class Blockchain(object):
         return guess_hash[:4] == "0000"
 
 
-# Instantiate our Node
+# Instantiate the Node
 app = Flask(__name__)
 
 # Generate a globally unique address for this node
